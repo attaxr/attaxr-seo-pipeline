@@ -1,0 +1,19 @@
+[project]
+name = "seo-pipeline"
+version = "0.3.0"
+description = "Modular SEO content pipeline — research, analyze, and create blog content from any agent framework"
+requires-python = ">=3.11"
+dependencies = ["browser-use-sdk >= 0.1, < 1.0"]
+
+[project.urls]
+Homepage = "https://github.com/attaxa/seo-pipeline"
+Repository = "https://github.com/attaxa/seo-pipeline"
+Documentation = "https://github.com/attaxa/seo-pipeline#readme"
+
+[tool.setuptools.packages.find]
+where = ["scripts"]
+include = ["seo_pipeline*"]
+
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"

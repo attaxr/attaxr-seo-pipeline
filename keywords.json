@@ -1,0 +1,7 @@
+[
+  {"term": "example keyword 1", "search_volume": 3200, "difficulty": 72, "relevance": 5, "intent": "commercial", "cluster": "cluster-a"},
+  {"term": "example keyword 2", "search_volume": 1800, "difficulty": 58, "relevance": 5, "intent": "commercial", "cluster": "cluster-a"},
+  {"term": "example keyword 3", "search_volume": 900, "difficulty": 45, "relevance": 4, "intent": "informational", "cluster": "cluster-a"},
+  {"term": "example keyword 4", "search_volume": 600, "difficulty": 40, "relevance": 4, "intent": "commercial", "cluster": "cluster-b"},
+  {"term": "example keyword 5", "search_volume": 2400, "difficulty": 60, "relevance": 3, "intent": "informational", "cluster": "cluster-b"}
+]

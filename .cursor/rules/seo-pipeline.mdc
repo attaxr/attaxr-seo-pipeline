@@ -1,0 +1,69 @@
+---
+description: SEO Content Pipeline — 4 stages from keyword research to article drafts. Local files only, no CMS.
+globs: ["*.md", "*.json", "*.py", "*.toml", "*.env", "*.env.example"]
+alwaysApply: false
+---
+
+# SEO Content Pipeline
+
+> **Canonical source:** `AGENTS.md` (project root) — full pipeline details live there.
+
+## Pipeline (sequential, fail-stop)
+
+```mermaid
+flowchart LR
+  A["Keyword Research"] --> B["Content Collection"] --> C["SEO Analysis"] --> D["Content Creation"]
+```
+
+## Stage 1 — Keyword Research
+
+Search domain keywords via web search. Capture term, volume, difficulty, relevance (1-5), intent (commercial/informational/navigational), cluster. Prioritize long-tail commercial terms. Save to `keywords.json`.
+
+## Stage 2 — Content Collection
+
+### Credential Check (REQUIRED)
+1. Check `BROWSER_USE_API_KEY` env var → if unset, try `.env` → if still unset, prompt user with redacted input (`getpass.getpass()`).
+2. **Never** print the key in tool output, terminal, conversation, or logs.
+3. Do not proceed without a valid key.
+
+### Run
+- **Primary:** `python -m seo_pipeline --from-json keywords.json` (Browser Use Cloud SDK v3 — AI article extraction).
+- **Fallback:** DuckDuckGo HTML search (URLs only, no body content).
+- **Both fail?** Stop. Do not stage 3.
+
+## Stage 3 — SEO Analysis
+
+Analyze each article: keyword usage (title, H1, first 100 words, density), gaps, missing subtopics, readability, structure (H2/H3, lists, tables), 3-5 improvements.
+
+**Must find:** the unique angle no competitor covers.
+
+Output: `pipeline_data/analysis/`.
+
+## Stage 4 — Content Creation
+
+Per cluster: 1,500+ words, original insight in first 200 words, H2/H3 hierarchy, lists, case study, CTA, 2-3 image suggestions.
+
+### Humanization
+Read draft, strip AI-isms, adjust tone, vary rhythm, use active voice. Sound like an expert explaining to a colleague.
+
+Output: `pipeline_data/drafts/`.
+
+## Quality Checklist
+
+- [ ] All 4 stages done or explicitly skipped
+- [ ] Each article ≥ 1,500 words
+- [ ] Unique angle vs top 3 competitors
+- [ ] SEO metadata complete
+- [ ] ≥ 2 image suggestions per article
+- [ ] Humanization pass applied
+- [ ] Run report written
+
+## Configuration
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `SEO_PIPELINE_DIR` | `./pipeline_data/` | Artifact directory |
+| `BROWSER_USE_API_KEY` | — | Browser Use Cloud API key |
+| `AUTHOR_NAME` | `Author Name` | Default author |
+
+Set via `.env` or export. Run `python scripts/setup.py` for interactive setup.
