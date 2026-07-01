@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "seo-pipeline",
+  "description": "Systematic 4-stage SEO content pipeline from keyword research to article drafts. Runs on local files — no CMS required.",
+  "owner": {
+    "name": "Attaxa",
+    "url": "https://github.com/attaxa"
+  },
+  "plugins": [
+    {
+      "name": "seo-pipeline",
+      "description": "Keyword research → competitor scraping → SEO gap analysis → 1,500+ word article drafts. Browser Use Cloud SDK for AI-powered extraction; DuckDuckGo fallback.",
+      "source": "./",
+      "category": "content"
+    }
+  ]
+}

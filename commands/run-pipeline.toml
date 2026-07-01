@@ -1,0 +1,2 @@
+description = "Run the 4-stage SEO content pipeline for a topic"
+prompt = "Run the SEO pipeline for {{args}}. Always follow AGENTS.md — execute all 4 stages (keyword research → content collection → SEO analysis → content creation) in sequence. Check BROWSER_USE_API_KEY before scraping. Output goes to pipeline_data/. Produce 1,500+ word articles with unique angles vs competitors. Apply humanization pass after drafting."

@@ -202,16 +202,18 @@ See [`AGENTS.md`](AGENTS.md) for the full pipeline description, quality checklis
 
 | Agent | Config file | Setup |
 |-------|------------|-------|
-| Hermes | `skills/` | `skill_view(name='seo-pipeline-llm')` |
-| Claude Code | `AGENTS.md` | Clone repo |
+| Hermes | `plugin.yaml` + `__init__.py` + `skills/` + `commands/` | `hermes plugins install attaxa/seo-pipeline --enable` |
+| Claude Code | `AGENTS.md` + `.claude-plugin/` | Clone repo (marketplace: `.claude-plugin/marketplace.json`) |
 | Cursor | `.cursor/rules/` | Ships in-repo |
 | Windsurf | `.windsurf/rules/` | Ships in-repo |
-| Copilot CLI | `.github/copilot-instructions.md` | Ships in-repo |
-| Codex | `AGENTS.md` | Clone repo |
-| OpenCode | `opencode.json` + `AGENTS.md` | Clone repo |
+| Copilot CLI | `.github/copilot-instructions.md` + `hooks/copilot-hooks.json` | Ships in-repo |
+| Codex | `AGENTS.md` + `.codex-plugin/` | Clone repo |
+| OpenCode | `opencode.json` + `.opencode/` | Clone repo |
+| Devin | `.devin-plugin/` | Ships in-repo |
 | Cline | `.clinerules/` | Ships in-repo |
 | Aider | `AGENTS.md` | Clone repo |
-| Pi | `pi install git:...` | `pi install` |
+| Pi | `pi-extension/` | `pi install git:github.com/attaxa/seo-pipeline` |
+| Gemini | `gemini-extension.json` | Register in Gemini Studio |
 
 ---
 

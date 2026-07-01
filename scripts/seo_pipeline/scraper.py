@@ -68,6 +68,7 @@ def _proxy_kwargs() -> dict:
 
 
 def _slugify(text: str) -> str:
+    """Strip URL scheme, replace non-word chars with hyphens, truncate to 80 chars."""
     s = re.sub(r"^https?://", "", text)
     s = re.sub(r"[^\w/]", "-", s)
     s = re.sub(r"-+", "-", s).strip("-")
@@ -172,7 +173,6 @@ def scrape_keyword(keyword: str, api_key: str, outdir: str) -> bool:
     sys.stdout.write(f"\n=== Scraping: {keyword} ===\n")
     sys.stdout.flush()
 
-    # ── Primary: Browser Use Cloud SDK ──────────────────────────────
     if api_key:
         sys.stdout.write("  Trying Browser Use Cloud...\n")
         sys.stdout.flush()
@@ -191,7 +191,6 @@ def scrape_keyword(keyword: str, api_key: str, outdir: str) -> bool:
             if saved > 0:
                 return True
 
-    # ── Fallback: DuckDuckGo search (URL discovery only) ────────────
     # ponytail: DDG HTML endpoint works; fetching article content via HTTP does not.
     # We discover URLs so the agent can feed them to Browser Use on the next run.
     sys.stdout.write("  Falling back to DuckDuckGo search...\n")
@@ -212,8 +211,7 @@ def scrape_keyword(keyword: str, api_key: str, outdir: str) -> bool:
 
 
 def _auto_load_dotenv() -> None:
-    """Load .env from repo root if present."""
-    # scripts/seo_pipeline/scraper.py -> scripts/seo_pipeline/ -> scripts/ -> repo root
+    """Load .env from repo root (walks up from scripts/seo_pipeline/scraper.py → repo root)."""
     env_path = Path(__file__).resolve().parent.parent.parent / ".env"
     if env_path.exists():
         with open(env_path) as f:
@@ -225,6 +223,7 @@ def _auto_load_dotenv() -> None:
 
 
 def main() -> None:
+    """CLI entry: scrape articles for given keywords, writing to pipeline_data/articles."""
     _auto_load_dotenv()
 
     import argparse

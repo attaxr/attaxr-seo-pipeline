@@ -1,0 +1,10 @@
+{
+  "name": "seo-pipeline",
+  "version": "0.3.0",
+  "description": "4-stage SEO content pipeline — keyword research, competitor scraping, SEO gap analysis, and article drafting.",
+  "author": {
+    "name": "Attaxa",
+    "url": "https://github.com/attaxa"
+  },
+  "hooks": "./hooks/claude-codex-hooks.json"
+}

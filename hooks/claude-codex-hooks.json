@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import os; k=os.environ.get('BROWSER_USE_API_KEY',''); print('SEO Pipeline: BROWSER_USE_API_KEY ' + ('set (' + k[:8] + '...' + k[-4:] + ')' if k else 'MISSING — run: python scripts/setup.py'))\"",
+            "commandWindows": "python -c \"import os; k=os.environ.get('BROWSER_USE_API_KEY',''); print('SEO Pipeline: BROWSER_USE_API_KEY ' + ('set' if k else 'MISSING — run: python scripts/setup.py'))\"",
+            "timeout": 5,
+            "statusMessage": "Checking SEO Pipeline configuration..."
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import os; k=os.environ.get('BROWSER_USE_API_KEY',''); print('Pipeline key: ' + ('present' if k else 'MISSING'))\"",
+            "commandWindows": "python -c \"import os; k=os.environ.get('BROWSER_USE_API_KEY',''); print('Pipeline key: ' + ('present' if k else 'MISSING'))\"",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  }
+}

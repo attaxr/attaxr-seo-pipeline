@@ -27,7 +27,6 @@ def main() -> None:
     env_path = repo_root / ".env"
     env_vars: dict[str, str] = {}
 
-    # Read existing .env
     if env_path.exists():
         print(f"\nFound existing {env_path}")
         with open(env_path) as f:
@@ -79,14 +78,13 @@ def main() -> None:
             print(f"  Install failed: {result.stderr.strip()}")
             print("  Retry manually: pip install browser-use-sdk")
 
-    # ── Optional — Proxy configuration ────────────────────────────────
+    # Optional proxy config
     print("\n--- Browser Use Proxy (optional) ---")
     print("  A US residential proxy is active by default. You can change")
     print("  the country or provide a custom proxy (HTTP/SOCKS5).")
     print("  Leave everything empty to keep defaults.")
     print()
 
-    # Read any existing proxy settings so we don't overwrite
     current_proxy_country = env_vars.get("BROWSER_USE_PROXY_COUNTRY", "")
     if current_proxy_country:
         print(f"  Current country: {current_proxy_country}")
@@ -110,7 +108,7 @@ def main() -> None:
                 if pw:
                     env_vars["BROWSER_USE_CUSTOM_PROXY_PASSWORD"] = pw
 
-    # Write .env — preserve ALL existing vars, update only what we touched
+    # Persist to .env — preserves existing vars, overwrites what we touched
     lines = [
         "# SEO Pipeline Configuration",
         "# Get a free API key at: https://cloud.browser-use.com/settings?tab=api-keys",

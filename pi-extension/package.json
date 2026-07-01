@@ -1,0 +1,9 @@
+{
+  "name": "seo-pipeline-pi-extension",
+  "private": true,
+  "type": "module",
+  "description": "Pi agent harness extension for the SEO Content Pipeline",
+  "scripts": {
+    "test": "node --test ./test/*.test.js"
+  }
+}

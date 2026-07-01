@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "type": "command",
+        "bash": "python3 -c \"import os; k=os.environ.get('BROWSER_USE_API_KEY',''); print('SEO Pipeline: BROWSER_USE_API_KEY ' + ('set' if k else 'MISSING — run: python scripts/setup.py'))\"",
+        "powershell": "python -c \"import os; k=os.environ.get('BROWSER_USE_API_KEY',''); print('SEO Pipeline: BROWSER_USE_API_KEY ' + ('set' if k else 'MISSING — run: python scripts/setup.py'))\"",
+        "timeoutSec": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+name: seo-pipeline
+version: "0.3.0"
+description: "4-stage SEO content pipeline — keyword research, competitor scraping, SEO gap analysis, and article drafting. Runs in any LLM agent with tool-calling."
+author: Attaxa
+license: MIT
+homepage: https://github.com/attaxa/seo-pipeline
+type: skills
+
+provides_commands:
+  - run-pipeline
+
+provides_hooks:
+  - pre_llm_call
+  - pre_gateway_dispatch
+
+skills:
+  - name: seo-pipeline-llm
+    path: skills/seo-pipeline-llm/SKILL.md
+    description: "Full 4-stage SEO pipeline: keyword research → scraping → analysis → content creation"
+  - name: seo-pipeline-bash
+    path: skills/seo-pipeline-bash/SKILL.md
+    description: "One-shot scraping pipeline via Browser Use SDK or DuckDuckGo fallback"
+
+env:
+  - BROWSER_USE_API_KEY
+  - BROWSER_USE_PROXY_COUNTRY
+  - BROWSER_USE_CUSTOM_PROXY_HOST
+  - BROWSER_USE_CUSTOM_PROXY_PORT
+  - BROWSER_USE_CUSTOM_PROXY_USERNAME
+  - BROWSER_USE_CUSTOM_PROXY_PASSWORD
+  - SEO_PIPELINE_DIR

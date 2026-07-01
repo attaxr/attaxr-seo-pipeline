@@ -1,0 +1,13 @@
+{
+  "name": "seo-pipeline",
+  "version": "0.3.0",
+  "description": "4-stage SEO content pipeline — keyword research, competitor scraping, SEO gap analysis, and article drafting. Runs in any LLM agent with tool-calling.",
+  "author": {
+    "name": "Attaxa",
+    "url": "https://github.com/attaxa"
+  },
+  "homepage": "https://github.com/attaxa/seo-pipeline",
+  "repository": "https://github.com/attaxa/seo-pipeline",
+  "license": "MIT",
+  "keywords": ["seo", "content-pipeline", "keyword-research", "seo-analysis", "content-creation", "blog-automation"]
+}
