@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/seo-pipeline-logo.svg" width="220" height="220" alt="SEO Content Pipeline">
+  <img src="static/logo.png" alt="Attaxr" width="220">
 </p>
 
 <h1 align="center">SEO Content Pipeline</h1>
